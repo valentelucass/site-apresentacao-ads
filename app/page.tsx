@@ -135,7 +135,13 @@ export default function HomePage() {
                       <strong>Curso:</strong> Análise e Desenvolvimento de Sistemas
                     </li>
                     <li>
-                      <strong>Aluno:</strong> Lucas Mateus Andrade da Costa
+                      <strong>Aluno:</strong>{' '}
+                      <Link
+                        href="https://portfolio-valentelucass.vercel.app/"
+                        className="text-[oklch(72%_0.20_250)] hover:text-[oklch(65%_0.22_250)] underline underline-offset-4 font-medium transition-colors"
+                      >
+                        Lucas Mateus Andrade da Costa
+                      </Link>
                     </li>
                     <li>
                       <strong>Professor:</strong> Marcelo Marcula

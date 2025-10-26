@@ -29,7 +29,19 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>© 2025 Lucas Mateus Andrade da Costa. Trabalho acadêmico.</p>
+          <p className="text-sm text-muted-foreground">
+            © 2025{" "}
+            <a
+              href="https://portfolio-valentelucass.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-[oklch(72%_0.20_250)] hover:text-[oklch(65%_0.22_250)] underline underline-offset-4 transition-colors"
+            >
+              Lucas Mateus Andrade da Costa
+            </a>
+            . Trabalho acadêmico.
+          </p>
+
         </div>
       </div>
     </footer>

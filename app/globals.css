@@ -11,7 +11,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.16 0 0);
   /* Primary now a vibrant indigo for minimal color pop */
-  --primary: oklch(51.254% 0.27298 263.505);
+  --primary: oklch(72% 0.20 250);
   --primary-foreground: oklch(0.2 0 0);
   /* Neutrals with gentle indigo tint */
   --secondary: oklch(0.96 0.06 265);
