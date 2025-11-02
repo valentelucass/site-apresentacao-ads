@@ -23,18 +23,18 @@ export default function ADO3Page() {
               <CardHeader className="flex justify-between items-center">
                 <CardTitle>Sobre o Modelo de Dados</CardTitle>
                 <a
-                  href="/ADO3.pdf"
+                  href="/ADO3.xlsx"
                   download
                   className="text-sm font-medium bg-primary text-primary-foreground px-3 py-1 rounded-xl shadow-sm hover:bg-primary/90 transition-all"
                 >
-                  Baixar PDF
+                  Baixar Excel
                 </a>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground leading-relaxed">
                   Esta seção apresenta a estrutura completa de classes do Sistema de Gerenciamento de Festas, detalhando
                   atributos, operações e relacionamentos entre as entidades. O modelo foi desenvolvido seguindo os
-                  princípios da orientação a objetos e serve como base para a implementação do sistema.
+                  princípios da orientação a objetos com base nos requisitos (ADO1) e casos de uso (ADO2).
                 </p>
               </CardContent>
             </Card>
@@ -60,20 +60,13 @@ export default function ADO3Page() {
                     <TableRow>
                       <TableCell>Festa</TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">id, codigo, data, estado (ativa/cancelada)</div>
+                        <div className="whitespace-normal">id, codigo, data, estado</div>
                       </TableCell>
                       <TableCell>
                         <div className="whitespace-normal">cadastrarFesta(), cancelarFesta(), consultarFesta()</div>
                       </TableCell>
                       <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Conjuge (1 para 2)</li>
-                          <li>ConfiguracaoFesta (1 para N)</li>
-                          <li>Orcamento (1 para N, via Configuração)</li>
-                          <li>ListaConvidados (1 para 1)</li>
-                          <li>Lista Presentes (1 para 0..1)</li>
-                          <li>Pagamento (1 para 1)</li>
-                        </ul>
+                        <div className="whitespace-normal">2 Cônjuges, 1 Configuração, 1 ListaConvidados, 1 ListaPresentes, 1 Pagamento</div>
                       </TableCell>
                     </TableRow>
 
@@ -83,15 +76,10 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">id, nome, cpf, endereco, telefone, email, senha</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">autenticar(), atualizarDados(), criarConfiguracaoFesta(), aceitarOrcamento(), efetuarPagamento()</div>
+                        <div className="whitespace-normal">autenticar(), atualizarDados()</div>
                       </TableCell>
                       <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Festa (N para 1)</li>
-                          <li>ConfiguracaoFesta (1 para N)</li>
-                          <li>Lista Convidados (1 para 1)</li>
-                          <li>Lista Presentes (1 para 1)</li>
-                        </ul>
+                        <div className="whitespace-normal">Participa de 1 Festa, pode visualizar Configuração, Listas e Orçamento</div>
                       </TableCell>
                     </TableRow>
 
@@ -104,7 +92,20 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">cadastrarFesta(), cadastrarConjuge(), cadastrarSalao(), cadastrarServico(), cadastrarProfissional(), alocarProfissional(), emitirRelatorio()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">Gerencia as classes: Festa, Conjuge, Salao, Servico, Profissional</div>
+                        <div className="whitespace-normal">Gerencia Festa, Cônjuge, Salão, Serviço e Profissional</div>
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>ConfiguracaoFesta</TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">id, data_criacao</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">adicionarServico(), removerServico(), adicionarProfissional(), removerProfissional(), selecionarSalao(), gerarOrcamento()</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">1 Festa, 1 Salao, N Serviços, N Profissionais, 1 Orçamento</div>
                       </TableCell>
                     </TableRow>
 
@@ -117,7 +118,7 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">cadastrarSalao(), atualizarDados(), removerSalao(), consultarDisponibilidade()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">ConfiguracaoFesta (1 para N)</div>
+                        <div className="whitespace-normal">N ConfiguracoesFesta</div>
                       </TableCell>
                     </TableRow>
 
@@ -130,10 +131,7 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">cadastrarServico(), atualizarServico(), removerServico()</div>
                       </TableCell>
                       <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Profissional (N para M)</li>
-                          <li>ConfiguracaoFesta (N para M)</li>
-                        </ul>
+                        <div className="whitespace-normal">N ConfiguracoesFesta, N Profissionais</div>
                       </TableCell>
                     </TableRow>
 
@@ -146,75 +144,20 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">cadastrarProfissional(), atualizarProfissional(), removerProfissional()</div>
                       </TableCell>
                       <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Servico (N para M)</li>
-                          <li>ConfiguracaoFesta (N para M)</li>
-                          <li>Regra: apenas um serviço por festa</li>
-                        </ul>
-                      </TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                      <TableCell>ConfiguracaoFesta</TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">id, data_criacao, listaServicos, listaProfissionais</div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">adicionarServico(), removerServico(), adicionarProfissional(), removerProfissional(), selecionarSalao(), calcularOrcamento()</div>
-                      </TableCell>
-                      <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Festa (N para 1)</li>
-                          <li>Salao (1 para 1)</li>
-                          <li>Servico (N para M)</li>
-                          <li>Profissional (N para M)</li>
-                          <li>Orcamento (1 para 1)</li>
-                        </ul>
+                        <div className="whitespace-normal">N Serviços, N ConfiguracoesFesta</div>
                       </TableCell>
                     </TableRow>
 
                     <TableRow>
                       <TableCell>Orcamento</TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">id, itens, valor_total, data_envio, status (Aguardando, Aceito, Pago)</div>
+                        <div className="whitespace-normal">id, itens, valor_total, data_envio, status</div>
                       </TableCell>
                       <TableCell>
                         <div className="whitespace-normal">gerarOrcamento(), enviarOrcamento(), atualizarStatus()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">ConfiguracaoFesta (1 para 1)</div>
-                      </TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                      <TableCell>Lista Convidados</TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">id</div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">adicionarConvidado(), removerConvidado(), gerarMalaDireta()</div>
-                      </TableCell>
-                      <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Festa (1 para 1)</li>
-                          <li>Contém múltiplos Convidados</li>
-                        </ul>
-                      </TableCell>
-                    </TableRow>
-
-                    <TableRow>
-                      <TableCell>Lista Presentes</TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">id</div>
-                      </TableCell>
-                      <TableCell>
-                        <div className="whitespace-normal">adicionarPresente(), removerPresente(), enviarLista()</div>
-                      </TableCell>
-                      <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Festa (1 para 1)</li>
-                          <li>Contém múltiplos Presentes</li>
-                        </ul>
+                        <div className="whitespace-normal">1 ConfiguracaoFesta</div>
                       </TableCell>
                     </TableRow>
 
@@ -227,53 +170,102 @@ export default function ADO3Page() {
                         <div className="whitespace-normal">efetuarPagamento(), confirmarPagamento(), enviarComprovante()</div>
                       </TableCell>
                       <TableCell>
-                        <ul className="whitespace-normal list-disc pl-4 space-y-1">
-                          <li>Festa (1 para 1)</li>
-                          <li>OperadoraCartoes (Interface Externa)</li>
-                        </ul>
+                        <div className="whitespace-normal">1 Festa, usa OperadoraCartoes</div>
                       </TableCell>
                     </TableRow>
 
                     <TableRow>
-                      <TableCell>ServicoEmail (Externo)</TableCell>
+                      <TableCell>ListaConvidados</TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">N/A</div>
+                        <div className="whitespace-normal">id</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">adicionarConvidado(), removerConvidado(), gerarMalaDireta()</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">1 Festa, contém N Convidados</div>
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>Convidado</TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">id, nome, endereco, telefone, email</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">—</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">Pertence a 1 Festa</div>
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>ListaPresentes</TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">id</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">adicionarPresente(), removerPresente(), enviarLista()</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">1 Festa, contém N Presentes</div>
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>Presente</TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">id, nome_presente, loja, valor</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">—</div>
+                      </TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">Pertence a 1 Festa</div>
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>ServicoEmail (externo)</TableCell>
+                      <TableCell>
+                        <div className="whitespace-normal">—</div>
                       </TableCell>
                       <TableCell>
                         <div className="whitespace-normal">enviarEmail()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">Utilizado por: Festa, Orcamento, Lista Presentes, Pagamento</div>
+                        <div className="whitespace-normal">Usado por Festa, Orcamento, ListaPresentes, Pagamento</div>
                       </TableCell>
                     </TableRow>
 
                     <TableRow>
-                      <TableCell>OperadoraCartoes (Externo)</TableCell>
+                      <TableCell>OperadoraCartoes (externo)</TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">N/A</div>
+                        <div className="whitespace-normal">—</div>
                       </TableCell>
                       <TableCell>
                         <div className="whitespace-normal">autorizarPagamento()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">Utilizado por: Pagamento</div>
+                        <div className="whitespace-normal">Usado por Pagamento</div>
                       </TableCell>
                     </TableRow>
 
                     <TableRow>
-                      <TableCell>Impressora (Externo)</TableCell>
+                      <TableCell>Impressora (externo)</TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">N/A</div>
+                        <div className="whitespace-normal">—</div>
                       </TableCell>
                       <TableCell>
                         <div className="whitespace-normal">imprimir()</div>
                       </TableCell>
                       <TableCell>
-                        <div className="whitespace-normal">Utilizado por: Lista Convidados, Gerente (relatórios)</div>
+                        <div className="whitespace-normal">Usado por ListaConvidados e Gerente (relatórios)</div>
                       </TableCell>
                     </TableRow>
                   </TableBody>
-                  <TableCaption>Resumo inicial baseado no conteúdo da ADO3</TableCaption>
+                  <TableCaption>Resumo corrigido baseado nos requisitos ADO1 e casos de uso ADO2</TableCaption>
                 </Table>
               </CardContent>
             </Card>
@@ -297,7 +289,7 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Atributos:</h4>
                       <p className="text-muted-foreground font-mono text-sm">
-                        id, codigo, data, estado (ativa/cancelada)
+                        id, codigo, data, estado
                       </p>
                     </div>
                     <div>
@@ -309,12 +301,11 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Conjuge (1 para 2)</li>
-                        <li>ConfiguracaoFesta (1 para N)</li>
-                        <li>Orcamento (1 para N, via Configuração)</li>
-                        <li>ListaConvidados (1 para 1)</li>
-                        <li>ListaPresentes (1 para 0..1)</li>
-                        <li>Pagamento (1 para 1)</li>
+                        <li>2 Cônjuges</li>
+                        <li>1 Configuração</li>
+                        <li>1 ListaConvidados</li>
+                        <li>1 ListaPresentes</li>
+                        <li>1 Pagamento</li>
                       </ul>
                     </div>
                   </div>
@@ -337,16 +328,14 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Operações:</h4>
                       <p className="text-muted-foreground font-mono text-sm">
-                        autenticar(), atualizarDados(), criarConfiguracaoFesta(), aceitarOrcamento(), efetuarPagamento()
+                        autenticar(), atualizarDados()
                       </p>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Festa (N para 1)</li>
-                        <li>ConfiguracaoFesta (1 para N)</li>
-                        <li>ListaConvidados (1 para 1)</li>
-                        <li>ListaPresentes (1 para 1)</li>
+                        <li>Participa de 1 Festa</li>
+                        <li>pode visualizar Configuração, Listas e Orçamento</li>
                       </ul>
                     </div>
                   </div>
@@ -374,8 +363,42 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <p className="text-muted-foreground">
-                        Gerencia as classes: Festa, Conjuge, Salao, Servico, Profissional
+                        Gerencia Festa, Cônjuge, Salão, Serviço e Profissional
                       </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ConfiguracaoFesta */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Classe: ConfiguraçãoFesta</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Atributos:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">
+                        id, data_criacao
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Operações:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">
+                        adicionarServico(), removerServico(), adicionarProfissional(), removerProfissional(),
+                        selecionarSalao(), gerarOrcamento()
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                        <li>1 Festa</li>
+                        <li>1 Salao</li>
+                        <li>N Serviços</li>
+                        <li>N Profissionais</li>
+                        <li>1 Orçamento</li>
+                      </ul>
                     </div>
                   </div>
                 </CardContent>
@@ -402,7 +425,7 @@ export default function ADO3Page() {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
-                      <p className="text-muted-foreground">ConfiguracaoFesta (1 para N)</p>
+                      <p className="text-muted-foreground">N ConfiguracoesFesta</p>
                     </div>
                   </div>
                 </CardContent>
@@ -428,8 +451,8 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Profissional (N para M)</li>
-                        <li>ConfiguracaoFesta (N para M)</li>
+                        <li>N ConfiguracoesFesta</li>
+                        <li>N Profissionais</li>
                       </ul>
                     </div>
                   </div>
@@ -458,43 +481,8 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Servico (N para M)</li>
-                        <li>ConfiguracaoFesta (N para M)</li>
-                        <li>Regra: apenas um serviço por festa</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* ConfiguracaoFesta */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Classe: ConfiguraçãoFesta</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Atributos:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">
-                        id, data_criacao, listaServicos, listaProfissionais
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Operações:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">
-                        adicionarServico(), removerServico(), adicionarProfissional(), removerProfissional(),
-                        selecionarSalao(), calcularOrcamento()
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Festa (N para 1)</li>
-                        <li>Salao (1 para 1)</li>
-                        <li>Servico (N para M)</li>
-                        <li>Profissional (N para M)</li>
-                        <li>Orcamento (1 para 1)</li>
+                        <li>N Serviços</li>
+                        <li>N ConfiguracoesFesta</li>
                       </ul>
                     </div>
                   </div>
@@ -511,7 +499,7 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Atributos:</h4>
                       <p className="text-muted-foreground font-mono text-sm">
-                        id, itens, valor_total, data_envio, status (Aguardando, Aceito, Pago)
+                        id, itens, valor_total, data_envio, status
                       </p>
                     </div>
                     <div>
@@ -522,63 +510,7 @@ export default function ADO3Page() {
                     </div>
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
-                      <p className="text-muted-foreground">ConfiguracaoFesta (1 para 1)</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* ListaConvidados */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Classe: ListaConvidados</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Atributos:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">id</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Operações:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">
-                        adicionarConvidado(), removerConvidado(), gerarMalaDireta()
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Festa (1 para 1)</li>
-                        <li>Contém múltiplos Convidados (não modelado como classe separada)</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* ListaPresentes */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-2xl">Classe: ListaPresentes</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold mb-2">Atributos:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">id</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Operações:</h4>
-                      <p className="text-muted-foreground font-mono text-sm">
-                        adicionarPresente(), removerPresente(), enviarLista()
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
-                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Festa (1 para 1)</li>
-                        <li>Contém múltiplos Presentes (não modelado como classe separada)</li>
-                      </ul>
+                      <p className="text-muted-foreground">1 ConfiguracaoFesta</p>
                     </div>
                   </div>
                 </CardContent>
@@ -604,9 +536,111 @@ export default function ADO3Page() {
                     <div>
                       <h4 className="font-semibold mb-2">Relacionamentos:</h4>
                       <ul className="list-disc list-inside space-y-1 text-muted-foreground">
-                        <li>Festa (1 para 1)</li>
-                        <li>OperadoraCartoes (Interface Externa)</li>
+                        <li>1 Festa</li>
+                        <li>usa OperadoraCartoes</li>
                       </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ListaConvidados */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Classe: ListaConvidados</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Atributos:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">id</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Operações:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">
+                        adicionarConvidado(), removerConvidado(), gerarMalaDireta()
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                        <li>1 Festa</li>
+                        <li>contém N Convidados</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Convidado */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Classe: Convidado</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Atributos:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">id, nome, endereco, telefone, email</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Operações:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">—</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
+                      <p className="text-muted-foreground">Pertence a 1 Festa</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ListaPresentes */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Classe: ListaPresentes</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Atributos:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">id</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Operações:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">
+                        adicionarPresente(), removerPresente(), enviarLista()
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
+                      <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                        <li>1 Festa</li>
+                        <li>contém N Presentes</li>
+                      </ul>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Presente */}
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl">Classe: Presente</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold mb-2">Atributos:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">id, nome_presente, loja, valor</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Operações:</h4>
+                      <p className="text-muted-foreground font-mono text-sm">—</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-2">Relacionamentos:</h4>
+                      <p className="text-muted-foreground">Pertence a 1 Festa</p>
                     </div>
                   </div>
                 </CardContent>

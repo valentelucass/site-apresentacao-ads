@@ -11,7 +11,10 @@ export const metadata: Metadata = {
   title: "Sistema de Gerenciamento de Festas - Documentação",
   description:
     "Documentação acadêmica completa do Sistema de Gerenciamento de Festas de Casamento - Centro Universitário Senac",
-  generator: "v0.app",
+  generator: "valentelucass",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({
