@@ -1,11 +1,11 @@
 <!-- PORTFOLIO-FEATURED 
- title: ADS Site — Sistema de Gerenciamento de Festas (ADO1–ADO4) 
- description: Aplicação Next.js com páginas ADO1–ADO4 apresentando requisitos, casos de uso, modelo de dados/classes e protótipo visual, com paleta indigo e suporte a tema escuro. 
- technologies: Next.js, React, TypeScript, Tailwind CSS 
- demo: `https://site-apresentacao-ads.vercel.app/` 
- highlight: true 
- image: public/foto.jpg 
- -->
+title: ADS Site — Sistema de Gerenciamento de Festas (ADO1–ADO4) 
+description: Aplicação Next.js com páginas ADO1–ADO4 apresentando requisitos, casos de uso, modelo de dados/classes e protótipo visual, com paleta indigo e suporte a tema escuro. 
+technologies: Next.js, React, TypeScript, Tailwind CSS 
+demo: https://site-apresentacao-ads.vercel.app/
+highlight: true 
+image: public/foto.jpg 
+-->
 
 <p align="center"> 
   <img src="public/foto.png" alt="Capa do projeto" width="1200"> 
