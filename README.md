@@ -4,7 +4,7 @@ description: Aplicação Next.js com páginas ADO1–ADO4 apresentando requisito
 technologies: Next.js, React, TypeScript, Tailwind CSS 
 demo: https://site-apresentacao-ads.vercel.app/
 highlight: true 
-image: public/foto.jpg 
+image: public/foto.png
 -->
 
 <p align="center"> 
